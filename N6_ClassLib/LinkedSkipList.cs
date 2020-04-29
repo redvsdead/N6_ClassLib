@@ -36,6 +36,13 @@ namespace N6_ClassLib
             _next.tail.Lower = _lvl.tail;
             Node<T> i = _lvl.head.Next.Next;
             Node<T> cur = _next.head;
+            while (i != null && i.Next != null)
+            {
+                cur.Next = new Node<T>(cur.Key, i, cur.Next);
+                cur = cur.Next;
+                i = i.Next.Next;
+
+            }
             return _next;
         }
 
