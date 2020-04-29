@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace N6_ClassLib
 {
     //вспомогательные операции над списком с пропусками
-    class ListUtils
+    class ListUtils<T>
     {
 
     }
