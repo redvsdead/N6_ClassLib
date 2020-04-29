@@ -46,9 +46,29 @@ namespace N6_ClassLib
             return _next;
         }
 
+        LinkedSkipList<T> BuildList(LinkedSkipList<T> _list)
+        {
+            LinkedSkipList<T> lvl = new LinkedSkipList<T>();
+            Node<T> i = _list.tail;
+            Node<T> j = _list.head;
+            //построение первого уровня
+            while (j != _list.tail)
+            {
+                i.Next = new Node<T>(j.Key, null, j.Next); 
+                i = i.Next;
+                j = j.Next;
+            }
+            //пока к-во элементов на текущем уровне >2, каждый второй перекидываем на новый уровень
+            while (lvl.Count() > 2)
+            {
+                lvl = BuildLvl(lvl);
+            }
+            return lvl;
+        }
+
         public void Add(T value)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Clear()
